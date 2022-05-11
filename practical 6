@@ -1,0 +1,93 @@
+There are flight paths between cities. If there is a flight between city A and city B then there is an edge between the cities. 
+The cost of the edge can be the time that flight take to reach city B from A, or the amount of fuel used for the journey.
+Represent this as a graph. The node can be represented by airport name or name of the city.
+Use adjacency list representation of the graph or use adjacency matrix representation of the graph. 
+Check whether the graph is connected or not. Justify the storage representation used.
+
+#include<iostream>
+using namespace std;
+class Flight
+{
+public:
+    int n,i,j,adjm[100][100],c,p,citynum[100],path,w,e;
+    string city[100];
+    Flight()
+    {
+        cout<<"\n Enter Number of Cities = ";
+        cin>>c;
+        cout<<"\n Enter Number of Path  = ";
+        cin>>path;
+        cout<<"\n Enter name of the "<<c<<" city";
+        for(p=0;p<c;p++)
+        {
+            cin>>city[p];
+            citynum[p] = p;
+        }
+        cout<<"\n Entered names of the "<<c<<"city";
+        for(p=0;p<c;p++)
+        {
+            cout<<"\n "<<city[p];
+            cout<<"\n Number of "<<p<<"cities are :";
+            cout<<city[p]<<"="<<citynum[p];
+        }
+
+    }
+void create();
+void display();
+void abc();
+
+};
+void Flight ::create()
+{
+        cout<<"\n How many edges you have in a graph";
+        cin>>e;
+        for(int k=1;k<=e;k++)
+        {
+            cout<<"Enter the pair of cities which are connected";
+            cin>>i>>j;
+
+            cout<<"Enter the distance between city"<<i<<"and city"<<j;
+            cin>>adjm[i][j];
+            adjm[j][i]=adjm[i][j];
+
+        }
+
+
+}
+
+void Flight ::display()
+{
+    cout<<"\n Your Matrix is: ";
+        for(i=0;i<c;i++)
+        {
+            for(j=0;j<c;j++)
+            {
+                cout<<"\t "<<adjm[i][j];
+
+            }
+            cout<<"\n \t \t";
+        }
+
+
+}
+void Flight ::abc()
+{
+    for(i=0;i<c;i++)
+    {
+        cout<<"\t " <<city[i];
+        for(j=0;j>2;j++)
+        {
+            cout<<"\t " <<city[j];
+        }
+        cout<<"\n \t \n \t";
+    }
+
+}
+
+int main()
+{
+    Flight f;
+    f.abc();
+    f.create();
+    f.display();
+}
